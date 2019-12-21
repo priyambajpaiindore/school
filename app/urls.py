@@ -13,5 +13,8 @@ urlpatterns = [
 	path('getteacher/',teacher1),
 	path('getteacher/<int:pk>/',teacher2),
     path('login/',LoginData.as_view(),name='login'),
-	path('login_admin/',AdminLogin.as_view())
+	path('login_admin/',AdminLogin.as_view()),
+	path('school_count/',SchoolCountView.as_view()),
+	path('student_count/',StudentCountView.as_view()),
+	path('teacher_count/',TeacherCountView.as_view()),
 ]

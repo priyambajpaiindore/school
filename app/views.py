@@ -11,23 +11,18 @@ from rest_framework import viewsets
 
 from .serializer import AdminLoginSerializer
 
+from .models import School
 # Create your views here.
 
 
 class LoginData(APIView):
-	
-
-
 
 	def post(self,request):
 		#import pdb;pdb.set_trace()
-
 		serelize=UserLogin(data=request.data)
 		#import pdb; pdb.set_trace()
 		serelize.is_valid(raise_exception=True)
 		objectuser=serelize.validated_data
-		
-		
 		#import pdb;pdb.set_trace()
 		token, _ = Token.objects.get_or_create(user=objectuser)
 		return Response({'token':token.key,'message':'User login successfully'},status=status.HTTP_200_OK,headers={"Access-Control-Allow-Origin":"*"})
@@ -62,3 +57,22 @@ class AdminLogin(APIView):
 		
 		token, _ = Token.objects.get_or_create(user=objectuser)
 		return Response({'token':token.key,'message':'User login successfully'},status=status.HTTP_200_OK,headers={"Access-Control-Allow-Origin":"*"})
+
+class SchoolCountView(APIView):
+	def get(self,request):
+		count = School.objects.all().count()
+		return Response({"count":count})
+
+class TeacherCountView(APIView):
+	def get(self,request):
+		count = Teacher.objects.all().count()
+		return Response({"count":count})
+
+class StudentCountView(APIView):
+	def get(self,request):
+		count = Student.objects.all().count()
+		return Response({"count":count})
+
+
+
+

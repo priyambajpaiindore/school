@@ -82,3 +82,4 @@ class  AdminLoginSerializer(serializers.ModelSerializer):
 		else:
 			raise exceptions.ValidationError('fill all the fields')
 	
+

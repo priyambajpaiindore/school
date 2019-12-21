@@ -53,7 +53,9 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:4200",
     "http://127.0.0.1:9000"
 ]
-ALLOWED_HOSTS = ["192.168.0.134","127.0.0.1","27.6.228.194"]
+#ALLOWED_HOSTS = ["192.168.0.134","127.0.0.1","27.6.228.194"]
+ALLOWED_HOSTS = ['*']
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -134,3 +136,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
